@@ -1,0 +1,7 @@
+/* carder.css */
+@media (max-width: 600px) {
+    .hide-image {
+      display: none;
+    }
+  }
+  

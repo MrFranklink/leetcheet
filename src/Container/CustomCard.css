@@ -1,0 +1,20 @@
+
+.custom-card {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .custom-card-image {
+    transform: translateY(20px);
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+  
+  .custom-card.show {
+    opacity: 1;
+  }
+  
+  .custom-card-image.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  

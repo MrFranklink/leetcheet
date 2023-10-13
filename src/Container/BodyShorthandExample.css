@@ -1,0 +1,21 @@
+
+.custom-car {
+    transform: translateX(100%);
+    border: 2px solid gray; 
+    transition: transform 1s ease;
+    
+   
+  }
+  
+  
+  .custom-card.show {
+    transform: translateX(0%);
+    transition: transform 1s ease;
+  }
+
+  .bold-text {
+    font-weight: bold;
+    margin-left: 650px;;
+
+  }
+  

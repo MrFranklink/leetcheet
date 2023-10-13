@@ -1,0 +1,87 @@
+import React, { useState } from 'react';
+import ProgressBar from 'react-bootstrap/ProgressBar';
+import { Modal, Button } from 'react-bootstrap';
+
+function ModalBox({ show, onHide, title, children }) {
+  return (
+    <Modal show={show} onHide={onHide} centered>
+      <Modal.Header closeButton>
+        <Modal.Title>{title}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        {children} {/* Render the modal content */}
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={onHide}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+function CheckboxList({ handleCheckboxChange, modalContent }) {
+  const [showModal, setShowModal] = useState(false);
+  const [modalTitle, setModalTitle] = useState('');
+
+  const handleButtonClick = (title) => {
+    setModalTitle(title);
+    setShowModal(true);
+  };
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            onChange={handleCheckboxChange}
+          />
+          <button onClick={() => handleButtonClick('1. Two Sum')}>1. Two Sum</button>
+        </label>
+      </div>
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            onChange={handleCheckboxChange}
+          />
+          <button onClick={() => handleButtonClick('Choose The Platform')}>Check this box</button>
+        </label>
+      </div>
+      {/* Add more buttons with unique content as needed */}
+      
+      <ModalBox show={showModal} onHide={() => setShowModal(false)} title={modalTitle}>
+        {modalContent} {/* Render the modal content */}
+      </ModalBox>
+    </div>
+  );
+}
+
+function App() {
+  const [checkedCheckboxes, setCheckedCheckboxes] = useState(0);
+
+  const handleCheckboxChange = (e) => {
+    const isChecked = e.target.checked;
+    setCheckedCheckboxes((prevChecked) =>
+      isChecked ? prevChecked + 1 : prevChecked - 1
+    );
+  };
+
+  return (
+    <div>
+      <ProgressBar now={checkedCheckboxes * 25} label={`${checkedCheckboxes * 25}%`} />
+      <CheckboxList
+        handleCheckboxChange={handleCheckboxChange}
+        modalContent={<p>This is a unique modal content for Button 1</p>}
+      />
+      <CheckboxList
+        handleCheckboxChange={handleCheckboxChange}
+        modalContent={<p>This is a unique modal content for Button 2</p>}
+      />
+      {/* Add more CheckboxList components with unique modal content as needed */}
+    </div>
+  );
+}
+
+export default App;

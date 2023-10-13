@@ -1,0 +1,17 @@
+
+.animated-button {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    margin-right: 102px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .animated-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  }
+  
+
+  .animated-button:last-child {
+    margin-right: 20px; 
+  }
+  
